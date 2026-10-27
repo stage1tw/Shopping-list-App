@@ -1,0 +1,41 @@
+/* 모바일에서도 아이템 행·추가 폼이 세로로 쌓이지 않게 한다 */
+[class*="st-key-row-"] [data-testid="stHorizontalBlock"],
+[data-testid="stForm"] [data-testid="stHorizontalBlock"] {
+    flex-wrap: nowrap !important;
+    align-items: center;
+}
+[class*="st-key-row-"] [data-testid="stColumn"],
+[data-testid="stForm"] [data-testid="stColumn"] {
+    min-width: 0 !important;
+}
+/* 체크박스·수정·삭제 칸은 손가락으로 누르기 쉬운 44px 고정 폭 */
+[class*="st-key-row-"] [data-testid="stColumn"]:not(:nth-child(2)) {
+    flex: 0 0 2.75rem !important;
+}
+[class*="st-key-row-"] button {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+}
+/* 이름이 길어 줄바꿈돼도 수량은 첫 줄 이름 옆에 붙어 있게 한다 */
+.item-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+.item-name {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+}
+.item-qty {
+    flex: none;
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+.item-done .item-name,
+.item-done .item-qty {
+    text-decoration: line-through;
+    opacity: 0.45;
+}
